@@ -14,6 +14,7 @@
 - 新增 `scripts/__init__.py`，保证技能内脚本导入更稳
 - 新增 README 首页流程图
 - 新增 Contributor 标注：`codex`
+- 新增仓库内置可选子技能 `optional_skills/huoyan-bianjibu-laoqian/`
 
 ### Changed
 

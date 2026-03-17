@@ -15,7 +15,7 @@
 5. 用 `bm-md` 渲染 Markdown
 6. 自动投递到公众号草稿箱
 
-如果用户明确要求“老钱风格 / 去 AI 味 / 老钱终审”，可以先调用 `huoyan-bianjibu-laoqian` 做一次可选终审，再进入本技能主链路。
+如果用户明确要求“老钱风格 / 去 AI 味 / 老钱终审”，可以先调用仓库内置的可选子技能 [`optional_skills/huoyan-bianjibu-laoqian/SKILL.md`](optional_skills/huoyan-bianjibu-laoqian/SKILL.md) 做一次终审，再进入本技能主链路。
 
 ## 适用场景
 
@@ -49,6 +49,11 @@ gongzhonghao-peitu-fabu/
 ├── .gitignore
 ├── agents/
 │   └── openai.yaml
+├── optional_skills/
+│   └── huoyan-bianjibu-laoqian/
+│       ├── SKILL.md
+│       └── agents/
+│           └── openai.yaml
 ├── references/
 │   ├── setup.md
 │   └── style-guide.md
@@ -76,7 +81,7 @@ gongzhonghao-peitu-fabu/
 
 - 现成文章直入：默认不改文，只做后处理与发布
 - 技能内聚：`gemini_driver.py`、`remove_watermark.py` 和水印模板已经内置到技能目录
-- 可选老钱终审：仅在用户明确要求时触发
+- 可选老钱终审：`huoyan-bianjibu-laoqian` 已随仓库内置，仅在用户明确要求时触发
 - 可落地发布：已经包含 `bm-md`、公众号登录态、剪贴板粘贴、封面上传的完整链路
 - 可远程同步：`.gitignore` 已排除登录态、生成图、缓存和本地环境文件
 
@@ -293,6 +298,7 @@ BM_MD_RENDER_URL="http://localhost:2663/api/markdown/render"
 - `scripts/remove_watermark.py`
 - `scripts/assets/bg_48.png`
 - `scripts/assets/bg_96.png`
+- `optional_skills/huoyan-bianjibu-laoqian/SKILL.md`
 
 同时 `.gitignore` 会排掉这些不该上传的内容：
 

@@ -21,7 +21,7 @@ Treat the provided article as the locked input and focus on asset production plu
 
 ## Optional Pre-Pass
 
-`火焰编辑部老钱` is an optional upstream pass, not part of the default pipeline.
+`火焰编辑部老钱` is an optional upstream pass, not part of the default pipeline. A bundled copy is included at `optional_skills/huoyan-bianjibu-laoqian/`.
 
 Use it only when the user explicitly wants one of these:
 

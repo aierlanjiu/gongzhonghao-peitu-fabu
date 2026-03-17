@@ -1,0 +1,7 @@
+interface:
+  display_name: "火焰编辑部老钱"
+  short_description: "把写作任务改写成去 AI 味提示词。"
+  default_prompt: "Use $huoyan-bianjibu-laoqian to turn my writing task into a low-AI-taste Chinese prompt."
+
+policy:
+  allow_implicit_invocation: true
