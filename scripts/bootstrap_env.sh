@@ -3,10 +3,22 @@ set -euo pipefail
 
 SKILL_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
-# Load .env IF it exists
+# Load .env IF it exists (robust to spaces and quotes)
 DOTENV_PATH="$SKILL_DIR/.env"
 if [ -f "$DOTENV_PATH" ]; then
-  export $(grep -v '^#' "$DOTENV_PATH" | xargs)
+  while IFS='=' read -r key value || [ -n "$key" ]; do
+    # Skip comments and empty lines
+    if [[ "$key" =~ ^# ]] || [ -z "$key" ]; then
+      continue
+    fi
+    # Strip quotes if they exist
+    value="${value%\"}"
+    value="${value#\"}"
+    value="${value%\'}"
+    value="${value#\'}"
+    
+    export "$key=$value"
+  done < "$DOTENV_PATH"
 fi
 
 BM_MD_DIR="${BM_MD_DIR:-}"
