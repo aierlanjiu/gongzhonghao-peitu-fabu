@@ -1,5 +1,9 @@
 # 公众号配图发布
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/aierlanjiu/gongzhonghao-peitu-fabu?display_name=tag)](https://github.com/aierlanjiu/gongzhonghao-peitu-fabu/releases)
+[![Repo](https://img.shields.io/badge/GitHub-gongzhonghao--peitu--fabu-black?logo=github)](https://github.com/aierlanjiu/gongzhonghao-peitu-fabu)
+
 一个面向现成文章的公众号执行型技能包。
 
 它默认不负责爆文逆向，也不默认改稿。输入是一篇已经写好的文章，输出是一套可以直接进入微信公众号草稿箱的交付链路：
@@ -19,6 +23,20 @@
 - 你想快速补齐封面图与正文配图
 - 你想把图片去水印后直接送进公众号草稿箱
 - 你想把这套流程单独打包并同步到远程仓库
+
+## 30 秒快速开始
+
+```bash
+cp .env.example .env
+bash scripts/bootstrap_env.sh
+python3 scripts/init_gemini_login.py
+python3 scripts/init_wechat_login.py
+python3 scripts/generate_images.py --prompt 'cover.jpg::你的封面提示词'
+python3 scripts/remove_watermark.py /abs/path/to/cover.jpg
+python3 scripts/publish_article.py --title "你的标题" --markdown /abs/path/article.md --cover /abs/path/to/cover.jpg
+```
+
+如果你已经完成登录，日常只需要从 `generate_images.py` 开始往后跑。
 
 ## 目录结构
 
@@ -255,6 +273,17 @@ BM_MD_RENDER_URL="http://localhost:2663/api/markdown/render"
 - 发布前先确认 `assets/wechat_profile/` 不是空目录
 - 如果 HTML 已复制成功但正文没贴进去，优先怀疑浏览器焦点或粘贴链路，不要先怪 `bm-md`
 - 如果先发了带水印的版本，应该去水印后重新投递一版新草稿
+
+## 上传前安全边界
+
+推远程仓库前，至少确认这几项：
+
+- `.env` 没有被纳入版本控制
+- `.gemini/` 没有被纳入版本控制
+- `assets/wechat_profile/` 没有被纳入版本控制
+- `assets/generated_images/` 没有被纳入版本控制
+- 没有编辑器临时文件，比如 `.swp`
+- README、示例命令和配置文件里没有你的本机绝对路径
 
 ## 适合推远程仓库的原因
 
