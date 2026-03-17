@@ -1,7 +1,7 @@
 interface:
   display_name: "公众号配图发布"
-  short_description: "Generate illustrations and push drafts to WeChat."
-  default_prompt: "Use $gongzhonghao-peitu-fabu to turn my article text into image prompts and publish-ready WeChat draft assets."
+  short_description: "Take a finished article, generate visuals, clean images, and push a WeChat draft."
+  default_prompt: "Use $gongzhonghao-peitu-fabu to process my finished article into prompts, images, watermark-cleaned assets, and a publish-ready WeChat draft. If I explicitly ask for 老钱风格 or 去AI味, optionally run $huoyan-bianjibu-laoqian first."
 
 policy:
   allow_implicit_invocation: true

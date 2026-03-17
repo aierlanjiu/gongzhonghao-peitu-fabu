@@ -134,8 +134,13 @@ def run_bun_script(script_path, args):
     subprocess.run(cmd, check=True)
 
 
-def send_real_paste_keystroke():
-    run_bun_script(PASTE_SCRIPT, ["--app", "Google Chrome"])
+def send_real_paste_keystroke(page):
+    try:
+        page.bring_to_front()
+        page.keyboard.press("Meta+V")
+        return
+    except Exception:
+        run_bun_script(PASTE_SCRIPT, ["--app", "Google Chrome"])
 
 
 def extract_token(page):
@@ -195,7 +200,7 @@ def replace_placeholder_with_image(page, label, image_path):
         print(f"Placeholder not found: {label}")
         return
     copy_image_to_clipboard(image_path)
-    send_real_paste_keystroke()
+    send_real_paste_keystroke(page)
     time.sleep(2)
 
 
@@ -262,7 +267,7 @@ def main():
             editor_page.locator("#title").first.fill(args.title)
             editor = editor_page.locator(".ProseMirror, .js_pmEditorArea").first
             editor.click()
-            send_real_paste_keystroke()
+            send_real_paste_keystroke(editor_page)
             time.sleep(3)
             for label, image_path in inline_mappings:
                 replace_placeholder_with_image(editor_page, label, image_path)

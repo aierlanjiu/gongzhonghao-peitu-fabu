@@ -45,6 +45,7 @@ python3 - <<'PY'
 import importlib
 import sys
 mods = ["playwright", "requests", "dotenv"]
+mods.extend(["cv2", "numpy"])
 missing = []
 for mod in mods:
     try:

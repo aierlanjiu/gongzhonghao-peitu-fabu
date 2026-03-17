@@ -10,8 +10,8 @@ from playwright.sync_api import sync_playwright
 SKILL_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(SKILL_DIR / ".env")
 
-# Defalut fallback path identical to generate_images.py
-DEFAULT_DRIVER_PATH = Path("/Users/papazed/00_Publiac Account/scripts/gemini_driver.py")
+# Default fallback path identical to generate_images.py
+DEFAULT_DRIVER_PATH = SKILL_DIR / "scripts" / "gemini_driver.py"
 
 def main():
     driver_path = Path(os.getenv("GEMINI_DRIVER_PATH", str(DEFAULT_DRIVER_PATH)))
