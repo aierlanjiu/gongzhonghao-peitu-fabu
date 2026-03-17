@@ -34,10 +34,10 @@ On macOS, also grant Accessibility permission to the terminal app you use, other
 
 ## bm-md
 
-Start your local `bm-md` service before publishing:
+Start your local `bm-md` service (path set in `.env` as `BM_MD_DIR`) before publishing:
 
 ```bash
-cd /Users/papazed/00_Publiac\ Account/02_排版tools/bm-md
+cd "/path/to/your/bm-md"
 npm run dev
 ```
 
@@ -65,13 +65,9 @@ This stores the browser profile in `assets/wechat_profile/`.
 
 ## Image driver
 
-The image script defaults to:
+The image script reads `GEMINI_DRIVER_PATH` from your `.env` file (configured via `.env.example`). 
 
-```text
-/Users/papazed/00_Publiac Account/scripts/gemini_driver.py
-```
-
-Override with:
+Override directly on command line:
 
 ```bash
 GEMINI_DRIVER_PATH=/custom/path/gemini_driver.py python3 scripts/generate_images.py ...

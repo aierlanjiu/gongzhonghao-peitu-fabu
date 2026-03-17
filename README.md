@@ -83,32 +83,34 @@ This is required for the real paste keystroke helper.
 
 ### 4. bm-md
 
-Expected local project path:
-
-```text
-/Users/papazed/00_Publiac Account/02_排版tools/bm-md
-```
-
-Start it with:
+Create a `.env` file from `.env.example` to set up your project paths.
 
 ```bash
-cd /Users/papazed/00_Publiac\ Account/02_排版tools/bm-md
+cp .env.example .env
+```
+
+Edit the `.env` file to point to your local `bm-md` deployment:
+
+```bash
+BM_MD_DIR="/path/to/your/02_排版tools/bm-md"
+```
+
+Start your `bm-md` locally:
+
+```bash
+cd "/path/to/your/02_排版tools/bm-md"
 npm run dev
 ```
 
-Default render endpoint:
-
-```text
-http://localhost:2663/api/markdown/render
-```
-
-The publish script supports these environment variables:
-
+Default render endpoint configuration:
+The publish script supports these environment variables (which can also be set in `.env`):
 - `BM_MD_RENDER_URL`
 - `BM_MD_API_URL`
 - `VITE_API_URL`
 - `BM_MD_APP_URL`
 - `VITE_APP_URL`
+
+Fallback URL if not specified is `http://localhost:2663/api/markdown/render`.
 
 ### 5. Bootstrap
 
@@ -151,13 +153,13 @@ python3 scripts/generate_images.py \
   --prompt '02_scene.jpg::A close-up of the badge and translation conflict...'
 ```
 
-Default driver path:
+By default, it will attempt to read from a standard location, but it is highly recommended to set `GEMINI_DRIVER_PATH` in your `.env` file to point to your `gemini_driver.py`.
 
-```text
-/Users/papazed/00_Publiac Account/scripts/gemini_driver.py
+```bash
+GEMINI_DRIVER_PATH="/path/to/your/scripts/gemini_driver.py"
 ```
 
-Override with:
+Override directly on command line:
 
 ```bash
 GEMINI_DRIVER_PATH=/custom/path/gemini_driver.py python3 scripts/generate_images.py ...

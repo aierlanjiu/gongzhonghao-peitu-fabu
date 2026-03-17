@@ -2,7 +2,21 @@
 set -euo pipefail
 
 SKILL_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-BM_MD_DIR="/Users/papazed/00_Publiac Account/02_排版tools/bm-md"
+
+# Load .env IF it exists
+DOTENV_PATH="$SKILL_DIR/.env"
+if [ -f "$DOTENV_PATH" ]; then
+  export $(grep -v '^#' "$DOTENV_PATH" | xargs)
+fi
+
+BM_MD_DIR="${BM_MD_DIR:-}"
+
+if [ -z "$BM_MD_DIR" ]; then
+  echo "Error: BM_MD_DIR is not set."
+  echo "Please set it in your environment or create a .env file in the root:"
+  echo "  echo \"BM_MD_DIR=/path/to/bm-md\" > \"$DOTENV_PATH\""
+  exit 1
+fi
 
 echo "[1/5] Checking Python..."
 python3 --version
