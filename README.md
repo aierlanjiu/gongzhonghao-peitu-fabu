@@ -62,6 +62,22 @@ gongzhonghao-peitu-fabu/
 - 可落地发布：已经包含 `bm-md`、公众号登录态、剪贴板粘贴、封面上传的完整链路
 - 可远程同步：`.gitignore` 已排除登录态、生成图、缓存和本地环境文件
 
+## 流程图
+
+```mermaid
+flowchart TD
+    A["现成文章 / article.md"] --> B["提取视觉节拍"]
+    B --> C["生成 visual_pack.md + prompts.json"]
+    C --> D["Gemini 生图"]
+    D --> E["逐张去水印"]
+    E --> F["bm-md 渲染 Markdown"]
+    F --> G["公众号编辑器粘贴正文"]
+    G --> H["替换占位图 + 上传封面"]
+    H --> I["保存到草稿箱"]
+    A -. 可选 .-> J["火焰编辑部老钱终审"]
+    J --> A
+```
+
 ## 标准执行流程
 
 ### 1. 准备文章
