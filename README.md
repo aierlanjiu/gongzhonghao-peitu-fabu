@@ -302,6 +302,10 @@ BM_MD_RENDER_URL="http://localhost:2663/api/markdown/render"
 - `assets/generated_images/`
 - `__pycache__/`
 
+## Contributors
+
+- `codex`
+
 ## 开源协议
 
 本项目使用 [MIT License](LICENSE)。
