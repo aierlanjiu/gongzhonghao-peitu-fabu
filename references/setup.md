@@ -53,7 +53,9 @@ The publish script resolves the render endpoint in this order:
 
 If you only have an app base URL, the script appends `/api/markdown/render`.
 
-## WeChat login
+## Account login
+
+### WeChat Login
 
 Initialize the persistent login session:
 
@@ -62,6 +64,16 @@ python3 scripts/init_wechat_login.py
 ```
 
 This stores the browser profile in `assets/wechat_profile/`.
+
+### Gemini Login
+
+Initialize the persistent driver profile session for image generation:
+
+```bash
+python3 scripts/init_gemini_login.py
+```
+
+This ensures full Google Auth for your chrome persistent profile location.
 
 ## Image driver
 

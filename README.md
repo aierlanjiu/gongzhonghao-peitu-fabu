@@ -130,6 +130,8 @@ This checks:
 
 ## First-Time Login
 
+### 1. WeChat Official Account Login
+
 Run:
 
 ```bash
@@ -137,10 +139,22 @@ python3 scripts/init_wechat_login.py
 ```
 
 What happens:
-
 1. Chrome opens the WeChat Official Account login page
 2. the user scans the QR code
 3. the persistent login session is stored under `assets/wechat_profile/`
+
+### 2. Gemini Account Login (For Image Generation)
+
+Run:
+
+```bash
+python3 scripts/init_gemini_login.py
+```
+
+What happens:
+1. Chrome launches with your configuration's persistent browser context
+2. You log into your Google Account so it can access https://gemini.google.com/app
+3. Closing the browser window saves the profile data
 
 ## Prompt And Image Generation
 
